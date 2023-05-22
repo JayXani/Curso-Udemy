@@ -8,7 +8,7 @@ while (opcao != -1) {
     opcao = entreValores(-1,10)
     console.log(`Os valores encontrados são: ${opcao}`)
 }
-
+console.log('Ate a proxima !')
 
 
 

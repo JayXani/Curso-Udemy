@@ -1,5 +1,5 @@
 let numero = 45;
-let trocaDados = Number("01.20");
+let trocaDados = Number("01.2000000008");
 let valor = 1.2345
 console.log(trocaDados)
 console.log(typeof numero)

@@ -1,4 +1,4 @@
-function tratamento(erro){
+function tratamento(){
     
     throw 'Erro !! \nNão é possivel colocar em maiúscula um atributo undefined.'
 }

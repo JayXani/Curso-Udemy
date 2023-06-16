@@ -1,5 +1,6 @@
 //números impares de 1 a 10
 {
+    
     console.log("Exibindo números de impares de 1 a 10")
     console.log('1');
     console.log('3');

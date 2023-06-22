@@ -37,5 +37,6 @@ console.log(volvo)
 volvo.acelerar(100)
 console.log(volvo.status())
 
+console.log(ferrari.velAtual)
 ferrari.acelerar(320)
 console.log(`Modelo ${ferrari.modelo}, velocidade: ${ferrari.status()}`)

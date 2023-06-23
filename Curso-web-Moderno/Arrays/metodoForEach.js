@@ -5,4 +5,4 @@ Array.prototype.forEach2 = function(callback){        //Implementando a função
     }
 }
 const aprovados = ['Ana','Josias','Marcos']
-aprovados.forEach2(nome => console.log(nome))
+aprovados.forEach2(nome => console.log(nome))   

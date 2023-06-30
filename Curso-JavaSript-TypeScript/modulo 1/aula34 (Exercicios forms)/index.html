@@ -1,0 +1,33 @@
+ <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario com JS</title>
+    <style>
+
+        input{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulario de cadastro</h1>
+    <div>
+        <form class = "forms" action=" " method ="get">
+            <p>Nome<input type="text" name="campo_nome" class="name" required>
+            </p>
+            <p>Sobrenome<input type="text" name="user_subname" class="sobrenome" required>
+            </p>
+            <p>Peso<input type="text" name="user_peso" class="peso" required>
+            </p>
+            <p>Altura<input type="text" name="user_altura" class="altura" required>
+            </p>
+            <button>Enviar</button>
+            <input type="reset" value="Limpar informações">
+        </form>
+    </div>
+    <div class="resultado"><br> RESULTADO</div>
+    <script src="js/script.js"></script> 
+</body>
+</html>

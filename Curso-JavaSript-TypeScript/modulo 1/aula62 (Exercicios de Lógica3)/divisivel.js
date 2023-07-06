@@ -7,8 +7,7 @@ const isModule = number=> {
     }
     return (number % 3 == 0)?'Fizz':(number % 5 == 0)?'Buzz': number
 }
-console.log(isModule(30))
-console.log(isModule(9))
-console.log(isModule(50))
-console.log(isModule(12))
-console.log(isModule(23))
+for (let i = 0; i <= 100; i++){
+    console.log(isModule(i))
+}
+console.log(isModule('a'))

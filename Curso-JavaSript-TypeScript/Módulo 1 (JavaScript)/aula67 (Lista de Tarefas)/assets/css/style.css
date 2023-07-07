@@ -49,7 +49,12 @@ form button:hover{
     color: black;
     cursor:pointer;
 }
-form input:focus{
+.input-task{
+    padding: 3px;
+    margin-bottom: 5px;
+    display: block;
+}
+input:focus{
     outline: 1px solid var(--primary-color);
 }
 .btn-add-task{
@@ -59,5 +64,14 @@ form input:focus{
     border-radius:5px;   
 }
 .btn-add-task:hover{
-    background-color: rgb(75, 156, 233);
+    background-color: rgb(222, 235, 238);
+}
+.Clean-Task {
+    margin-left: 10px;
+    border-radius: 4px;
+    background-color: azure;
+    border: 1.5px solid rgb(128, 128, 128);
+}
+.Clean-Task:hover{
+    background-color: rgb(222, 235, 238);
 }

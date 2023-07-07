@@ -9,6 +9,10 @@
 
 }
 body{
+    background: url('../img/fundo-madeira.jpg') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
     margin: 0px;
     padding: 0px;
     background-color: var(--primary-color);
@@ -21,7 +25,7 @@ h1{
     max-width: 640px;
     margin: 50px auto;
     padding: 20px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.658);
     border-radius: 20px;
     box-shadow: 1px 1px 1px rgb(58, 57, 57);
    
@@ -52,10 +56,13 @@ form button:hover{
     color: black;
     cursor:pointer;
 }
-.input-task{
+.input-task,.input-hour-task,.date-task{
     padding: 3px;
-    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    margin-top: 5px;
     display: block;
+    
 }
 input:focus{
     outline: 1px solid var(--primary-color);
@@ -66,12 +73,18 @@ p{
 li{
     margin-bottom: 8px;
 }
+img{
+    width: 100%;
+    display: block;
+    padding: auto;
+}
 .btn-add-task{
     background-color: rgb(140, 248, 212);
     border:1px solid black;
     padding:2px;
     border-radius:5px; 
     margin-top:10px; 
+
 }
 .btn-add-task:hover{
     background-color: rgb(222, 235, 238);

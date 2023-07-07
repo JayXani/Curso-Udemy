@@ -11,14 +11,27 @@
 
 <body>
     <section class="container">
-        <h1>Lista de tarefas</h1>
-        <p>
-            <input type="text" class = "input-task">
-            <button class="btn-add-task">Adicionar nova tarefa</button>
-            ou clique na tecla 'Enter'
-        </p>
-        <ul class="list-tasks">
-        </ul>
+        <div id = "png">
+            <img src="img/calendatNormal.png" alt="Image of the Calendar">
+        </div>
+            <h1>Lista de tarefas</h1>
+                <div>
+                    <label for="input-task">Tarefa a realizar: </label>
+                    <input type="text" class = "input-task">
+                </div>
+                <div class="time-task">
+                    <label for="date-task">Data da tarefa:</label>
+                    <input type="date" class="date-task">
+                    <label for="input-hour-task">Horario da Tarefa:</label>
+                    <input type="time" class = 'input-hour-task'>
+                </div>
+                <p>
+                    <button class="btn-add-task">Adicionar nova tarefa</button>
+                     
+                </p>
+            <ul class="list-tasks">
+            </ul>
+        
     </section>
     <script src="js/scriptMain.js"></script>
 </body>

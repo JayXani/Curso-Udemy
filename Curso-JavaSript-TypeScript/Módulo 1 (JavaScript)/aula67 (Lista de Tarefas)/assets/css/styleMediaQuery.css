@@ -1,8 +1,0 @@
-@charset "UTF-8";
-
-@media  screen and (min-width: 400px) {
-    img{
-        background: url('../img/calendarLittle.png') no-repeat;
-        background-position: center center;
-    }
-}

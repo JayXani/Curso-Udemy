@@ -54,23 +54,34 @@ function formatedTask(task , dayTask, timeTask){
 }
 
 function getEvents() {
+    const verifyDate = ['SEGUNDA', 'TERÇA', 'QUARTA','QUINTA','SEXTA','SÁBADO','DOMINGO']
+    let getDay
+    console.log()
     buttonConfirmTask.addEventListener('click', _ => {
         if (!inputTask.value) return alert('Campo de tarefas não pode estar vazio !')//Se estiver vazio, ele não faz nada
         if (!dateOfTask.value){
             return alert('Data não selecionada')  
         }else{
-            const verifyDate = ['SEGUNDA', 'TERÇA', 'QUARTA','QUINTA','SEXTA','SÁBADO','DOMINGO']
-            for(let values of verifyDate){
-                if(dateOfTask.value.toUpperCase() !== values){
-                    alert('ATENÇÃO !\n\nSiga os padrões de pontuação do seu país, referente aos dias da semana,\ne verifique se o dia foi escrito de forma correta.')
-                    break;
+            for(let i in verifyDate){
+                if(verifyDate[i] !== dateOfTask.value.toUpperCase()){
+                    getDay = false
+                    continue
+                }else{
+                    getDay = true
+                    break
                 }
             }
         }
         if (!timeOfTask.value) return alert('Deve ser informado um horário')
-        const task = formatedTask(inputTask.value, dateOfTask.value, timeOfTask.value)
-        createNewTask(task)
-        clearInputTask()
+        if(getDay != false){
+            const task = formatedTask(inputTask.value, dateOfTask.value.toUpperCase(), timeOfTask.value)
+            createNewTask(task)
+            clearInputTask()
+        }else{
+            clearInputTask()
+            return alert('ATENÇÃO !\n\nSiga os padrões de pontuação do seu país, referente aos dias da semana,\ne verifique se o dia foi escrito de forma correta.')
+        }
+
     })
     inputTask.addEventListener('keypress', event => {
         if(event.keyCode === 13){

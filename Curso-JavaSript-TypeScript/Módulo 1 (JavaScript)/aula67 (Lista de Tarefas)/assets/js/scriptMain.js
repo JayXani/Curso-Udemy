@@ -28,7 +28,6 @@ const clearInputTask = _ => {
     inputTask.value = ''
     dateOfTask.value = ''
     timeOfTask.value = ''
-    inputTask.focus()
 }
 const saveTaskInLocalStorag = _ => {
     const tasks = liOfTask.querySelectorAll('li')
@@ -78,7 +77,6 @@ function alterCalendarOfYear() {
 function getEvents() {
     const verifyDate = ['SEGUNDA', 'TERÇA', 'QUARTA', 'QUINTA', 'SEXTA', 'SÁBADO', 'DOMINGO']
     let getDay
-    console.log()
     buttonConfirmTask.addEventListener('click', _ => {
         if (!inputTask.value) return alert('Campo de tarefas não pode estar vazio !')//Se estiver vazio, ele não faz nada
         if (!dateOfTask.value) {
@@ -96,7 +94,7 @@ function getEvents() {
         }
         if (!timeOfTask.value) return alert('Deve ser informado um horário')
         if (getDay != false) {
-            const task = formatedTask(inputTask.value, dateOfTask.value.toUpperCase(), timeOfTask.value)
+            const task = formatedTask(inputTask.value, dateOfTask.value.toUpperCase().trim(), timeOfTask.value)
             createNewTask(task)
             clearInputTask()
         } else {

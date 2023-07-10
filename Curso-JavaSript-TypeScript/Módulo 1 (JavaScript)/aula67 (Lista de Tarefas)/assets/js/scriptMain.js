@@ -7,11 +7,43 @@ const imgCalendar = document.querySelector('#imgCale')
 const dateNow = new Date()
 
 const createNewTask = (task) => {
-    const li = document.createElement('li')
-
-    li.innerText = task
-    li.appendChild(createButtonClean(li))
-    liOfTask.appendChild(li)
+    const p = document.createElement('p')
+    const liMonsday = liOfTask.querySelector('#Monsday')
+    const liTuesday = liOfTask.querySelector('#Tuesday')
+    const liWednesday = liOfTask.querySelector('#Wednesday')
+    const liThursday = liOfTask.querySelector('#Thursday')
+    const liFriday = liOfTask.querySelector('#Friday')
+    const liSaturday = liOfTask.querySelector('#Saturday')
+    const liSunday = liOfTask.querySelector('#Sunday')
+    p.setAttribute('class', 'tasks')
+    p.innerText = task
+    p.appendChild(createButtonClean(p))
+    let split1 = task.split('Dia:')
+    let getDayOftask = split1[1].split('\n')
+    let day = getDayOftask[0]
+    switch(day.trim()){
+        case "SEGUNDA":
+            liMonsday.appendChild(p)
+            break
+        case "TERÇA":
+            liTuesday.appendChild(p)
+            break
+        case "QUARTA":
+            liWednesday.appendChild(p)
+            break
+        case "QUINTA":
+            liThursday.appendChild(p)
+            break
+        case "SEXTA":
+            liFriday.appendChild(p)
+            break
+        case "SÁBADO":
+            liSaturday.appendChild(p)
+            break
+        case "DOMINGO":
+            liSunday.appendChild(p)
+            break
+    }
     saveTaskInLocalStorag()
 }
 
@@ -30,7 +62,7 @@ const clearInputTask = _ => {
     timeOfTask.value = ''
 }
 const saveTaskInLocalStorag = _ => {
-    const tasks = liOfTask.querySelectorAll('li')
+    const tasks = liOfTask.querySelectorAll('.tasks')
     const listOfTasks = []
 
     for (let captureTask of tasks) {

@@ -114,8 +114,8 @@ function getEvents() {
         if (!dateOfTask.value) {
             return alert('Data não selecionada')
         } else {
-            for (let i in verifyDate) {
-                if (verifyDate[i] !== dateOfTask.value.toUpperCase()) {
+            for (let value of verifyDate) {
+                if (value !== dateOfTask.value.toUpperCase()) {
                     getDay = false
                     continue
                 } else {

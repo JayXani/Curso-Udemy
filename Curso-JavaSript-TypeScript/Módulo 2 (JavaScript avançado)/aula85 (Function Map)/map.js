@@ -17,7 +17,9 @@ const addIdInPessoas = pessoas.map((e,indice) => {
     newObject.id = indice + 1
     return newObject
 })
+const teste = pessoas.flatMap(element => element.idade) //Apenas percorrre o array e concatena os resultados
+console.log(teste)
 // console.log(namePeople)
 // console.log(removeName)
 // console.log(addIdInPessoas)
-console.log(pessoas)
+// console.log(pessoas)

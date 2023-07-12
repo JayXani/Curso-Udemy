@@ -4,49 +4,33 @@ const liOfTask = document.querySelector('.list-tasks')
 const dateOfTask = document.querySelector('.date-task')
 const timeOfTask = document.querySelector('.input-hour-task')
 const imgCalendar = document.querySelector('#imgCale')
+const verifyDate = ['SEGUNDA', 'TERÇA', 'QUARTA', 'QUINTA', 'SEXTA', 'SÁBADO', 'DOMINGO']
 const dateNow = new Date()
 
-const createNewTask = (task) => {
+const createNewTask = (getTask) => {
     const p = document.createElement('p')
-    const liMonsday = liOfTask.querySelector('#Monsday')
-    const liTuesday = liOfTask.querySelector('#Tuesday')
-    const liWednesday = liOfTask.querySelector('#Wednesday')
-    const liThursday = liOfTask.querySelector('#Thursday')
-    const liFriday = liOfTask.querySelector('#Friday')
-    const liSaturday = liOfTask.querySelector('#Saturday')
-    const liSunday = liOfTask.querySelector('#Sunday')
+    const fullTask = `Dia: ${getTask['dayTask']}\nTarefa: ${getTask.task}\nHorário: ${getTask.timeTask}`
+    const daysOfWeekend = [
+        liOfTask.querySelector('#Monsday'),
+        liOfTask.querySelector('#Tuesday'),
+        liOfTask.querySelector('#Wednesday'),
+        liOfTask.querySelector('#Thursday'),
+        liOfTask.querySelector('#Friday'),
+        liOfTask.querySelector('#Saturday'),
+        liOfTask.querySelector('#Sunday')
+    ]
     p.setAttribute('class', 'tasks')
-    p.innerText = task
-    p.appendChild(createButtonClean(p))
-    let split1 = task.split('Dia:')
-    let getDayOftask = split1[1].split('\n')
-    let day = getDayOftask[0]
-    switch(day.trim()){
-        case "SEGUNDA":
-            liMonsday.appendChild(p)
-            break
-        case "TERÇA":
-            liTuesday.appendChild(p)
-            break
-        case "QUARTA":
-            liWednesday.appendChild(p)
-            break
-        case "QUINTA":
-            liThursday.appendChild(p)
-            break
-        case "SEXTA":
-            liFriday.appendChild(p)
-            break
-        case "SÁBADO":
-            liSaturday.appendChild(p)
-            break
-        case "DOMINGO":
-            liSunday.appendChild(p)
-            break
+    p.innerText = fullTask
+    p.appendChild(createButtonClean())
+
+    let day = getTask['dayTask']
+    for(let i in verifyDate){
+        if(verifyDate[i] === day.trim()){
+            daysOfWeekend[i].appendChild(p)
+        }
     }
     saveTaskInLocalStorag()
 }
-
 const createButtonClean = _ => {
     const button = document.createElement('button')
 
@@ -82,8 +66,8 @@ const getTaskInStorage = _ => {
     }
 }
 function formatedTask(task, dayTask, timeTask) {
-    const fullTask = `Dia: ${dayTask}\nTarefa: ${task}\nHorário: ${timeTask}`
-    return fullTask
+    const objctTask = {task, dayTask, timeTask}
+    return objctTask
 }
 
 function alterCalendarOfYear() {
@@ -107,13 +91,10 @@ function alterCalendarOfYear() {
 }
 
 function getEvents() {
-    const verifyDate = ['SEGUNDA', 'TERÇA', 'QUARTA', 'QUINTA', 'SEXTA', 'SÁBADO', 'DOMINGO']
-    let getDay
+    let getDay = 0
     buttonConfirmTask.addEventListener('click', _ => {
         if (!inputTask.value) return alert('Campo de tarefas não pode estar vazio !')//Se estiver vazio, ele não faz nada
-        if (!dateOfTask.value) {
-            return alert('Data não selecionada')
-        } else {
+        if (!dateOfTask.value) return alert('Data não selecionada')
             for (let value of verifyDate) {
                 if (value !== dateOfTask.value.toUpperCase()) {
                     getDay = false
@@ -123,16 +104,12 @@ function getEvents() {
                     break
                 }
             }
-        }
         if (!timeOfTask.value) return alert('Deve ser informado um horário')
-        if (getDay != false) {
-            const task = formatedTask(inputTask.value, dateOfTask.value.toUpperCase().trim(), timeOfTask.value)
-            createNewTask(task)
-            clearInputTask()
-        } else {
-            clearInputTask()
-            return alert('ATENÇÃO !\n\nSiga os padrões de pontuação do seu país, referente aos dias da semana,\ne verifique se o dia foi escrito de forma correta.')
-        }
+        if (getDay === false) return alert('ATENÇÃO !\n\nSiga os padrões de pontuação do seu país, referente aos dias da semana,\ne verifique se o dia foi escrito de forma correta.')
+
+        const task = formatedTask(inputTask.value, dateOfTask.value.toUpperCase().trim(), timeOfTask.value)
+        createNewTask(task)
+        clearInputTask()
 
     })
     inputTask.addEventListener('keypress', event => {

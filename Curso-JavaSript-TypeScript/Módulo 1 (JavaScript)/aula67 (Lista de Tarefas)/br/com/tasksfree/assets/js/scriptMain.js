@@ -7,9 +7,8 @@ const imgCalendar = document.querySelector('#imgCale')
 const verifyDate = ['SEGUNDA', 'TERÇA', 'QUARTA', 'QUINTA', 'SEXTA', 'SÁBADO', 'DOMINGO']
 const dateNow = new Date()
 
-const createNewTask = (getTask) => {
+const createNewTask = (task) => {
     const p = document.createElement('p')
-    const fullTask = `Dia: ${getTask['dayTask']}\nTarefa: ${getTask.task}\nHorário: ${getTask.timeTask}`
     const daysOfWeekend = [
         liOfTask.querySelector('#Monsday'),
         liOfTask.querySelector('#Tuesday'),
@@ -19,11 +18,14 @@ const createNewTask = (getTask) => {
         liOfTask.querySelector('#Saturday'),
         liOfTask.querySelector('#Sunday')
     ]
+    
     p.setAttribute('class', 'tasks')
-    p.innerText = fullTask
+    p.innerText = task
     p.appendChild(createButtonClean())
+    let split1 = task.split('Dia:')
+    let getDayOftask = split1[1].split('\n')
+    let day = getDayOftask[0]
 
-    let day = getTask['dayTask']
     for(let i in verifyDate){
         if(verifyDate[i] === day.trim()){
             daysOfWeekend[i].appendChild(p)
@@ -54,20 +56,21 @@ const saveTaskInLocalStorag = _ => {
         textTask = textTask.replace('Apagar', '') //Cleaning text 'Apagar' of the button
         listOfTasks.push(textTask)
     }
+
     const tasksInJSON = JSON.stringify(listOfTasks)
     localStorage.setItem('task', tasksInJSON)
 }
 const getTaskInStorage = _ => {
     const getTask = localStorage.getItem('task')
-    const taskJsonToArray = JSON.parse(getTask)
+    const taskJsonToObject = JSON.parse(getTask)
 
-    for (let taskSaved of taskJsonToArray) {
-        createNewTask(taskSaved)
+    for (let values of taskJsonToObject) { 
+        createNewTask(values)
     }
 }
 function formatedTask(task, dayTask, timeTask) {
-    const objctTask = {task, dayTask, timeTask}
-    return objctTask
+    const fullTask = `Dia: ${dayTask}\nTarefa: ${task}\nHorário: ${timeTask}`
+    return fullTask
 }
 
 function alterCalendarOfYear() {

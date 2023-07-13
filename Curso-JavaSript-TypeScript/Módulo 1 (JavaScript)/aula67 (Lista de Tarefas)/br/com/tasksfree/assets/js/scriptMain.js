@@ -22,6 +22,7 @@ const createNewTask = (task) => {
     p.setAttribute('class', 'tasks')
     p.innerText = task
     p.appendChild(createButtonClean())
+    
     let split1 = task.split('Dia:')
     let getDayOftask = split1[1].split('\n')
     let day = getDayOftask[0]
